@@ -3,7 +3,12 @@
     # REGION: brain region you are studying
     # X, Y: number of replicates for each genotype
 
-# load in libraries and path to data
+
+# load in libraries, path to data directory, and list of sample names.
+    # i.e.
+        # filePath <- "/my/data/dir/"
+        # sampleNames <- c("KO1", "KO2", "KO3", "WT1", "WT2", "WT3")
+
 library("DESeq2")
 library("tximport")
 filePath <- "/parentDir/REGION/"
