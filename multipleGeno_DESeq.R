@@ -3,7 +3,11 @@
     # REGION: brain region you are studying
     # X, Y, Z: number of replicates for HT, KO, WT
 
-# load in libraries and path to data
+# load in libraries, path to data directory, and list of sample names.
+    # i.e.
+        # filePath <- "/my/data/dir/"
+        # sampleNames <- c("HT1", "HT2", "HT3", "KO1", "KO2", "KO3", "WT1", "WT2", "WT3")
+        
 library("DESeq2")
 library("tximport")
 filePath <- "/path/to/data/REGION/"
