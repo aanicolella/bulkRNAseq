@@ -7,32 +7,21 @@ library(clusterProfiler)
 hub<-AnnotationHub()
 mm <- hub[["AH75743"]]
 
-
 # variables to replace:
-    # parentDir/REGION_AGE_All.csv: path to a csv file containing three columns
-        # significant: genes that are significantly changed, regardless of directionality (usually
-        # padj < 0.05)
-        # upregulated: genes that are significantly changed with a positive logFC value, sometimes
-        # includes a logFC threshold (i.e. logFC > 0.25)
-        # downregulated: the same as upregulated but for negative logFC
+    # parentDir/REGION_AGE_All.csv: path to the DESeq output table for the experiment used in this analysis
     # REGION & AGE: replace to fit the descriptor of your analysis. Set as brain region and age 
         # for ease of use given the usual structuring of my datasets. 
-
 AGE <- read.csv("parentDir/REGION_AGE_All.csv")
-sample_all<- AGE$significant
-res=bitr(sample_all,fromType="ENSEMBL",toType="ENTREZID",OrgDb=mm)
-sample_all=res[,2]
-xx1=enrichGO(sample_all,OrgDb=mm,keyType="ENTREZID",readable=T)
-write.csv(xx1, "REGION/allAGE_REGION_GO.csv")
-
-sample_up<- AGE$upregulated
-resUp=bitr(sample_up,fromType="ENSEMBL",toType="ENTREZID",OrgDb=mm)
+# upregulated: genes that are significantly changed with a positive logFC value, sometimes
+        # includes a logFC threshold (i.e. logFC > 0.25)
+sample_up<- AGE[AGE$pvalue < 0.05 & AGE$log2FoldChange > 0,]
+resUp=bitr(sample_up$symbol,fromType="SYMBOL",toType="ENTREZID",OrgDb=mm)
 sample_up=resUp[,2]
 xx2=enrichGO(sample_up,OrgDb=mm,keyType="ENTREZID",readable=T)
-write.csv(xx2, "REGION/upAGE_REGION_GO.csv")
-
-sample_down<- AGE$downregulated
-resDown=bitr(sample_down,fromType="ENSEMBL",toType="ENTREZID",OrgDb=mm)
+write.csv(xx2, "REGION/upregulated_AGE_REGION_GO.csv")
+# downregulated: the same as upregulated but for negative logFC
+sample_down<- AGE[AGE$pvalue < 0.05 & AGE$log2FoldChange < 0,]
+resDown=bitr(sample_down$symbol,fromType="SYMBOL",toType="ENTREZID",OrgDb=mm)
 sample_down=resDown[,2]
 xx3=enrichGO(sample_down,OrgDb=mm,keyType="ENTREZID",readable=T)
-write.csv(xx3, "REGION/downAGE_REGION_GO.csv")
+write.csv(xx3, "REGION/downregulated_AGE_REGION_GO.csv")
