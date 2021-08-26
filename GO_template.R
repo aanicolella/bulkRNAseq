@@ -1,3 +1,9 @@
+# Install required packages if not already installed
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("clusterProfiler")
+BiocManager::install("AnnotationHub")
+
 # Load required libraries
 library(AnnotationHub)
 library(clusterProfiler)
