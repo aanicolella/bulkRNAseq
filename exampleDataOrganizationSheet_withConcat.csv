@@ -4,9 +4,3 @@ HT3,/path/to/replicate/HT3/,/path/to/rawData/1_runName.1.GATCTATC_ATGAGGCT.unmap
 WT1,/path/to/replicate/WT1/,/path/to/rawData/1_runName.1.AGCTCGCT_GCAGAATC.unmapped.1.fastq.gz,/path/to/rawData/1_runName.1.AGCTCGCT_GCAGAATC.unmapped.2.fastq.gz,/path/to/rawData/2_runName.2.AGCTCGCT_GCAGAATC.unmapped.1.fastq.gz,/path/to/rawData/2_runName.2.AGCTCGCT_GCAGAATC.unmapped.2.fastq.gz
 WT2,/path/to/replicate/WT2/,/path/to/rawData/1_runName.1.CGGAACTG_CACTACGA.unmapped.1.fastq.gz,/path/to/rawData/1_runName.1.CGGAACTG_CACTACGA.unmapped.2.fastq.gz,/path/to/rawData/2_runName.2.CGGAACTG_CACTACGA.unmapped.1.fastq.gz,/path/to/rawData/2_runName.2.CGGAACTG_CACTACGA.unmapped.2.fastq.gz
 WT3,/path/to/replicate/WT3/,/path/to/rawData/1_runName.1.ACACTAAG_ATCCATAT.unmapped.1.fastq.gz,/path/to/rawData/1_runName.1.ACACTAAG_ATCCATAT.unmapped.2.fastq.gz,/path/to/rawData/2_runName.2.ACACTAAG_ATCCATAT.unmapped.1.fastq.gz,/path/to/rawData/2_runName.2.ACACTAAG_ATCCATAT.unmapped.2.fastq.gz
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
