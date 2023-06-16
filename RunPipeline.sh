@@ -21,7 +21,7 @@ use Anaconda3
 conda activate bulk_pipeline
 
 SEEDFILE=/path/to/file/manifest.txt
-outdir=/path/to/ouput_dir
+outdir=/path/to/output_dir
 #SEEDFILE=$1 ##sample sheet/manifest containing fastq information--tab seperated file with first column read1, second column read2, third column sample name (no spaces, etc in name), and each row is a sample
 #outdir=$2 ##the directory the bams will be written to
 sampname=$(awk "NR==$SGE_TASK_ID" $SEEDFILE | awk '{print $1}')
