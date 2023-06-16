@@ -4,7 +4,7 @@
 #$ -q broad
 #$ -e parentDir
 #$ -o parentDir
-#$ -l h_vmem=64g#
+#$ -l h_vmem=64G
 #$ -l h_rt=04:00:00
 
 filename="/path/to/exampleDataOrganizationSheet.csv"
