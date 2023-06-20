@@ -7,7 +7,7 @@
 #$ -l h_vmem=64G
 #$ -l h_rt=04:00:00
 
-filename="/path/to/exampleDataOrganizationSheet.csv"
+filename="/path/to/exampleDataOrganizationSheet_withConcat.csv"
 
 while IFS=,  read f1 f2 f3 f4 f5 f6 f7 f8
 do
