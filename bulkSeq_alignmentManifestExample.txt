@@ -1,0 +1,6 @@
+/path/to/rawData/1_HT1.unmapped.1.fastq.gz	/path/to/rawData/1_HT1.unmapped.2.fastq.gz	/path/to/rawData/2_HT1.unmapped.1.fastq.gz	/path/to/rawData/2_HT1.unmapped.2.fastq.gz	HT1
+/path/to/rawData/1_HT2.unmapped.1.fastq.gz	/path/to/rawData/1_HT2.unmapped.2.fastq.gz	/path/to/rawData/2_HT2.unmapped.1.fastq.gz	/path/to/rawData/2_HT2.unmapped.2.fastq.gz	HT2
+/path/to/rawData/1_HT3.unmapped.1.fastq.gz	/path/to/rawData/1_HT3.unmapped.2.fastq.gz	/path/to/rawData/2_HT3.unmapped.1.fastq.gz	/path/to/rawData/2_HT3.unmapped.2.fastq.gz	HT3
+/path/to/rawData/1_WT1.unmapped.1.fastq.gz	/path/to/rawData/1_WT1.unmapped.2.fastq.gz	/path/to/rawData/2_WT1.unmapped.1.fastq.gz	/path/to/rawData/2_WT1.unmapped.2.fastq.gz	WT1
+/path/to/rawData/1_WT2.unmapped.1.fastq.gz	/path/to/rawData/1_WT2.unmapped.2.fastq.gz	/path/to/rawData/2_WT2.unmapped.1.fastq.gz	/path/to/rawData/2_WT2.unmapped.2.fastq.gz	WT2
+/path/to/rawData/1_WT3.unmapped.1.fastq.gz	/path/to/rawData/1_WT3.unmapped.2.fastq.gz	/path/to/rawData/2_WT3.unmapped.1.fastq.gz	/path/to/rawData/2_WT3.unmapped.2.fastq.gz	WT3
