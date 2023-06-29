@@ -11,21 +11,30 @@
 
 library("DESeq2")
 library("tximport")
+
+# File paths and sample names
 filePath <- "/parentDir/REGION/"
 sampleNames <- c()
-
 # Set up metadata
     # model = genotype 
     # sample = individual sample name
 colData = data.frame(model=c(rep(c("EXP_GENO"), X), rep(c("EXP_WT"), Y)),sample=sampleNames)
 colData$model = relevel(colData$model, "EXP_WT")
-files <- file.path(filePath, paste0(sampleNames, "/", sampleNames, ".genes.results"))
-names(files) <- sampleNames
-rsem.in <- tximport(files, type="rsem", txIn=FALSE, txOut=FALSE)
+
+# Read in files for Salmon alignment
+files <- paste0(filePath, colData$sample, "/Salmon_out/quant.sf")
+names(files) <- colData$sample
+tx2gene = read.table(paste0(filePath, colData$sample[1], "/Salmon_out/trans2gene.txt"))
+txi.salmon = tximport(files, type = "salmon", tx2gene = tx2gene)
+
+# Read in files for RSEM alignment
+#files <- file.path(filePath, paste0(colData$sample, "/", colData$sample, ".genes.results"))
+#names(files) <- sampleNames
+#rsem.in <- tximport(files, type="rsem", txIn=FALSE, txOut=FALSE)
 
 # Optional: find genes below expression threshhold. Create 'NA' data frame to re-add lowly expressed 
 # genes for easier comparison between analyses.
-drop <- rsem.in
+drop <- txi.salmon
 drop$abundance <-
     drop$abundance[apply(drop$length,
                              1,
@@ -48,21 +57,21 @@ geneName1 <- geneName1["X2"]
 dropRes$symbol <- geneName1$X2
 
 # Filter lowly expressed genes found above out of the main dataset for the DE analysis
-rsem.in$abundance <-
-  rsem.in$abundance[apply(rsem.in$length,
+txi.salmon$abundance <-
+  txi.salmon$abundance[apply(txi.salmon$length,
                              1,
                              function(row) all(row > 5 )),]
-rsem.in$counts <-
-  rsem.in$counts[apply(rsem.in$length,
+txi.salmon$counts <-
+  txi.salmon$counts[apply(txi.salmon$length,
                              1,
                              function(row) all(row > 5 )),]
-rsem.in$length <-
-  rsem.in$length[apply(rsem.in$length,
+txi.salmon$length <-
+  txi.salmon$length[apply(txi.salmon$length,
                              1,
                              function(row) all(row > 5 )),]
                        
 # Convert data structure to proper format and run DESeq
-dds <- DESeqDataSetFromTximport(rsem.in, colData, ~model)
+dds <- DESeqDataSetFromTximport(txi.salmon, colData, ~model)
 dds <- DESeq(dds)
 check <- estimateSizeFactors(dds)
 norm <- counts(check, normalized=TRUE)
